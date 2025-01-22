@@ -9,11 +9,7 @@ export default function Room8Landing() {
         <div className="flex flex-col items-center justify-center space-y-12 text-center">
           {/* Logo */}
           <div className="relative w-full max-w-[300px] transition-all duration-700 hover:scale-105">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Digital%20(3)-oAIhNPDwL1SL3EonDF0YnGx6OtgJah.png"
-              alt="BrightSide Developer Logo"
-              className="w-full"
-            />
+            <img src="/GOAT.png" alt="BrightSide Developer Logo" className="w-full" />
           </div>
 
           {/* Main Heading with Gradient */}
@@ -35,9 +31,9 @@ export default function Room8Landing() {
             <Button
               size="lg"
               variant="outline"
-              className="border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black transition-colors duration-300"
+              className="border-yellow-500 text-yellow-500 bg-black hover:bg-yellow-500 hover:text-white transition-colors duration-300"
             >
-              View Projects
+              Goated 4L
             </Button>
           </div>
         </div>
@@ -62,27 +58,27 @@ export default function Room8Landing() {
 
 const features = [
   {
-    title: 'Modern Development',
-    description: 'Utilizing cutting-edge technologies and frameworks to build robust, scalable applications.',
+    title: 'Next-Level Innovation',
+    description: 'Building the future with bleeding-edge tech, turning wild ideas into unstoppable realities.',
   },
   {
-    title: 'Creative Solutions',
-    description: 'Transforming complex challenges into elegant, efficient solutions with innovative thinking.',
+    title: 'Perfection',
+    description: 'Crushing complexity with brilliance, delivering solutions that make the impossible look easy.',
   },
   {
-    title: 'Quality Assurance',
-    description: 'Ensuring exceptional performance and reliability through rigorous testing and optimization.',
+    title: 'Flawless Execution',
+    description: 'Crafting perfection with precision testing, ensuring everything runs like a dream.',
   },
   {
-    title: 'Responsive Design',
-    description: 'Creating seamless experiences across all devices with mobile-first approach.',
+    title: 'Dynamic Design',
+    description: 'Engineering visuals and interfaces that dominate across every device, no compromises.',
   },
   {
-    title: 'Clean Code',
-    description: 'Writing maintainable, documented code that follows best practices and industry standards.',
+    title: 'Legendary Code',
+    description: 'Writing code so clean, you’ll think it came from the gods of software development themselves.',
   },
   {
-    title: '24/7 Support',
-    description: 'Providing round-the-clock assistance and maintenance for your digital solutions.',
+    title: 'Unstoppable Flows',
+    description: 'Backing your vision 24/7 with expert work.',
   },
 ]
