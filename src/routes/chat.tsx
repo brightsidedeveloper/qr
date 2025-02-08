@@ -21,9 +21,11 @@ function Chat() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (scrollRef.current) {
+    const t = setTimeout(() => {
+      if (!scrollRef.current) return
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-    }
+    }, 100)
+    return () => clearTimeout(t)
   }, [messages])
 
   return (
