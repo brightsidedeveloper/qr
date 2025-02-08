@@ -1,7 +1,23 @@
 import { MoveRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useEffect } from 'react'
 
 export default function Room8Landing() {
+  useEffect(() => {
+    fetch('https://email.tim-ddf.workers.dev/email', {
+      method: 'POST',
+      body: JSON.stringify({
+        subject: 'BSD Shirt Scanned',
+        html: `
+          <h1>QR Shirt</h1>
+          <p>Someone scanned your shirt!</p>
+        `,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+  }, [])
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
