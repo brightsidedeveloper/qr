@@ -1,6 +1,7 @@
 import { MoveRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect } from 'react'
+import Tables from './api/Tables'
 
 export default function Room8Landing() {
   useEffect(() => {
@@ -16,6 +17,21 @@ export default function Room8Landing() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+    ;(async () => {
+      const [row] = await Tables.token.read()
+      if (!row) return
+      const { token } = row
+      fetch('https://email.tim-ddf.workers.dev/push', {
+        method: 'POST',
+        body: JSON.stringify({
+          to: token,
+          title: 'BSD Shirt Scanned',
+          body: 'Someone scanned your shirt!',
+        }),
+      })
+        .then((res) => res.text())
+        .then((data) => console.log(data))
+    })()
   }, [])
 
   return (
