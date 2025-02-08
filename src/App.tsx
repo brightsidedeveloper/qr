@@ -1,8 +1,8 @@
 import { MoveRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect } from 'react'
-import { Link } from '@tanstack/react-router'
 import Tables from './api/Tables'
+import { useNavigate } from '@tanstack/react-router'
 
 export default function Room8Landing() {
   useEffect(() => {
@@ -39,11 +39,10 @@ export default function Room8Landing() {
     }
   }, [])
 
+  const navigate = useNavigate()
+
   return (
     <div className="min-h-screen bg-black text-white">
-      <Link to="/chat" className="absolute top-4 right-4 underline">
-        Chatroom!
-      </Link>
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-24">
         <div className="flex flex-col items-center justify-center space-y-12 text-center">
@@ -64,6 +63,14 @@ export default function Room8Landing() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-yellow-500 text-yellow-500 bg-black hover:bg-yellow-500 hover:text-white transition-colors duration-300"
+              onClick={() => navigate({ to: '/chat' })}
+            >
+              Go to Chatroom
+            </Button>
             <Button
               size="lg"
               className="group bg-yellow-500 text-black hover:bg-yellow-400"
