@@ -38,7 +38,7 @@ export default function Room8Landing() {
               className="border-yellow-500 text-yellow-500 bg-black hover:bg-yellow-500 hover:text-white transition-colors duration-300"
               onClick={() => window.open('https://room8landing.pages.dev/', '_blank')}
             >
-              Goated 4L
+              Room 8
             </Button>
           </div>
         </div>
