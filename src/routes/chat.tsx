@@ -1,7 +1,7 @@
 import useChat from '@/context/useChat'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ChevronLeft } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/chat')({
   component: Chat,
@@ -17,6 +17,14 @@ function Chat() {
       setText('')
     }
   }
+
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
+  }, [messages])
 
   return (
     <div className="h-dvh flex flex-col bg-gray-100 p-4">
@@ -36,7 +44,7 @@ function Chat() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto bg-white p-4 rounded shadow-md space-y-2">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto bg-white p-4 rounded shadow-md space-y-2">
         {messages.map((msg) => (
           <div key={msg.id} className={`p-2 rounded-lg ${msg.name === name ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
             <span className="font-bold">{msg.name}:</span> {msg.text}

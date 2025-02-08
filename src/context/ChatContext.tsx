@@ -61,6 +61,7 @@ function useChat() {
       payload: msg,
     })
     setMessages((prev) => [...prev, msg])
+    Tables.messages.create({ name, msg: text })
     const [row] = await Tables.token.read()
     if (!row) return
     const { token } = row
