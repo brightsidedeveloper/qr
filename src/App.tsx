@@ -1,41 +1,49 @@
 import { MoveRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useEffect } from 'react'
+import { Link } from '@tanstack/react-router'
 import Tables from './api/Tables'
 
 export default function Room8Landing() {
   useEffect(() => {
-    fetch('https://email.tim-ddf.workers.dev/email', {
-      method: 'POST',
-      body: JSON.stringify({
-        subject: 'BSD Shirt Scanned',
-        html: `
-          <h1>QR Shirt</h1>
-          <p>Someone scanned your shirt!</p>
-        `,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-    ;(async () => {
-      const [row] = await Tables.token.read()
-      if (!row) return
-      const { token } = row
-      fetch('https://email.tim-ddf.workers.dev/push', {
+    try {
+      fetch('https://email.tim-ddf.workers.dev/email', {
         method: 'POST',
         body: JSON.stringify({
-          to: token,
-          title: 'BSD Shirt Scanned',
-          body: 'Someone scanned your shirt!',
+          subject: 'BSD Shirt Scanned',
+          html: `
+            <h1>QR Shirt</h1>
+            <p>Someone scanned your shirt!</p>
+          `,
         }),
       })
-        .then((res) => res.text())
+        .then((res) => res.json())
         .then((data) => console.log(data))
-    })()
+      ;(async () => {
+        const [row] = await Tables.token.read()
+        if (!row) return
+        const { token } = row
+        fetch('https://email.tim-ddf.workers.dev/push', {
+          method: 'POST',
+          body: JSON.stringify({
+            to: token,
+            title: 'BSD Shirt Scanned',
+            body: 'Someone scanned your shirt!',
+          }),
+        })
+          .then((res) => res.text())
+          .then((data) => console.log(data))
+      })()
+    } catch (error) {
+      console.log(error)
+    }
   }, [])
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <Link to="/chat" className="absolute top-4 right-4 underline">
+        Chatroom!
+      </Link>
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-24">
         <div className="flex flex-col items-center justify-center space-y-12 text-center">

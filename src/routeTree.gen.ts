@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as GAuthImport } from './routes/g-auth'
+import { Route as ChatImport } from './routes/chat'
 
 // Create Virtual Routes
 
@@ -34,6 +35,11 @@ const GAuthRoute = GAuthImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ChatRoute = ChatImport.update({
+  path: '/chat',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -48,6 +54,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatImport
       parentRoute: typeof rootRoute
     }
     '/g-auth': {
@@ -71,12 +84,14 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/chat': typeof ChatRoute
   '/g-auth': typeof GAuthRoute
   '/privacy-policy': typeof PrivacyPolicyLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/chat': typeof ChatRoute
   '/g-auth': typeof GAuthRoute
   '/privacy-policy': typeof PrivacyPolicyLazyRoute
 }
@@ -84,27 +99,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/chat': typeof ChatRoute
   '/g-auth': typeof GAuthRoute
   '/privacy-policy': typeof PrivacyPolicyLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/g-auth' | '/privacy-policy'
+  fullPaths: '/' | '/chat' | '/g-auth' | '/privacy-policy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/g-auth' | '/privacy-policy'
-  id: '__root__' | '/' | '/g-auth' | '/privacy-policy'
+  to: '/' | '/chat' | '/g-auth' | '/privacy-policy'
+  id: '__root__' | '/' | '/chat' | '/g-auth' | '/privacy-policy'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  ChatRoute: typeof ChatRoute
   GAuthRoute: typeof GAuthRoute
   PrivacyPolicyLazyRoute: typeof PrivacyPolicyLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  ChatRoute: ChatRoute,
   GAuthRoute: GAuthRoute,
   PrivacyPolicyLazyRoute: PrivacyPolicyLazyRoute,
 }
@@ -122,12 +140,16 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/chat",
         "/g-auth",
         "/privacy-policy"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/chat": {
+      "filePath": "chat.tsx"
     },
     "/g-auth": {
       "filePath": "g-auth.tsx"
