@@ -74,7 +74,7 @@ export default function Room8Landing() {
             <Button
               size="lg"
               className="group bg-yellow-500 text-black hover:bg-yellow-400"
-              onClick={() => window.open('https://brightsidedevelopers.vercel.app', '_blank')}
+              onClick={() => window.open('https://brightsidedevelopers.vercel.app')}
             >
               Get Started
               <MoveRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -83,7 +83,7 @@ export default function Room8Landing() {
               size="lg"
               variant="outline"
               className="border-yellow-500 text-yellow-500 bg-black hover:bg-yellow-500 hover:text-white transition-colors duration-300"
-              onClick={() => window.open('https://room8landing.pages.dev/', '_blank')}
+              onClick={() => window.open('https://room8landing.pages.dev/')}
             >
               Room 8
             </Button>
